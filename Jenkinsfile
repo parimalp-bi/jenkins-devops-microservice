@@ -10,13 +10,13 @@ pipeline {
 		stage('Checkout'){
 				steps{
 					sh 'mvn --version'
-					// sh 'docker version'
+					sh 'docker version'
 				}
 		}
 		stage('Compile'){
 				steps{
 					sh 'mvn clean compile'
-					sh 'docker version'
+					//sh 'docker version'
 				}
 		}
 
