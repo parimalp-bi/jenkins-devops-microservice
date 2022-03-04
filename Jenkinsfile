@@ -49,7 +49,7 @@ pipeline {
 
 			steps{
 				script{
-						dockerImage = docker.build("parimalppatil/currency-exchange-devops:{$env.Build_TAG}")
+						dockerImage = docker.build("parimalppatil/currency-exchange-devops:{$env.Build_ID}")
 				}
 				// docker build -t parimalppatil/currency-exchange-devops:$env.Build_TAG
 			}
