@@ -10,7 +10,7 @@ pool:
   vmImage: ubuntu-latest
   demands:
   - npm
-  - python3.8
+  - python
 
 steps:
 - script: echo Hello, world!
