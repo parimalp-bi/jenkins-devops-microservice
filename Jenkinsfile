@@ -1,6 +1,6 @@
 pipeline {
-	//agent { docker { image 'maven:3.6.3' } }
-	agent any
+	agent { docker { image 'maven' } }
+	// agent any
 	environment {
 		dockerHome= tool 'myDocker'
 		mavenHome= tool 'myMaven'
@@ -10,7 +10,7 @@ pipeline {
 		stage('Checkout'){
 				steps{
 					sh 'mvn --version'
-					//sh 'docker version'
+					sh 'docker version'
 				}
 		}
 		// stage('Compile'){
