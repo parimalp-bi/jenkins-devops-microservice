@@ -20,7 +20,8 @@ pipeline {
 		}
 		stage('Compile'){
 				steps{
-					sh 'mvn clean compile'
+					// sh 'mvn clean compile'
+					echo 'mvn clean compile'
 					
 				}
 		}
@@ -35,5 +36,35 @@ pipeline {
 					echo 'Integration test'
 				}
 		}
+
+		stage('Package'){
+				steps{
+					sh 'mvn package -DskipTests'
+				}
+		}
+
+
+		stage('Build Docker Image'){
+
+			steps{
+				script{
+						dockerImage = docker.build(parimalppatil/currency-exchange-devops:{$env.Build_TAG})
+				}
+				// docker build -t parimalppatil/currency-exchange-devops:$env.Build_TAG
+			}
+		}
+
+		stage('Push Docker Image'){
+
+			steps{
+				script{ //parimalppatil_docker this global credentials created in jenkins.
+						docker.withRegistry('','parimalppatil_docker') // first entry is in '' means default docker registry .. i.e docker hub
+						dockerImage.push()
+						dockerImage.push('latest')
+						
+					}
+				
+			}
+		}		
 	}
 }
