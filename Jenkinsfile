@@ -20,14 +20,14 @@ pipeline {
 		}
 		stage('Compile'){
 				steps{
-					echo 'Compile'
+					echo 'mvn clean compile'
 					
 				}
 		}
 
-		stage('Build'){
+		stage('test'){
 				steps{
-					echo 'Test'
+					echo 'mvn test'
 				}
 		}		
 		stage('Integration test'){
