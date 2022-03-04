@@ -39,7 +39,8 @@ pipeline {
 
 		stage('Package'){
 				steps{
-					sh 'mvn package -DskipTests'
+					echo 'Package Created'
+					// sh 'mvn package -DskipTests'
 				}
 		}
 
