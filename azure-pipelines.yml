@@ -13,7 +13,7 @@ pool:
   - python
 
 steps:
-- script: sh $(python --version)
+- script: python --version
   displayName: 'Run a one-line script'
 
 - script: |
