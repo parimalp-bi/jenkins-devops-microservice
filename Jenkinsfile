@@ -1,6 +1,6 @@
 pipeline {
-	agent { docker { image 'maven' } }
-	// agent any
+	//agent { docker { image 'maven' } }
+	agent any
 	environment {
 		dockerHome= tool 'myDocker'
 		mavenHome= tool 'myMaven'
@@ -9,8 +9,12 @@ pipeline {
 	stages{
 		stage('Checkout'){
 				steps{
-					sh 'mvn --version'
-					sh 'docker version'
+					// sh 'mvn --version'
+					// sh 'docker version'
+					echo "Build_NUMBER - $env.Build_NUMBER"
+					echo "Build_ID - $env.Build_ID"
+					echo "JOB_NAME - $env.JOB_NAME"
+					echo "Build_TAG - $env.Build_TAG"
 				}
 		}
 		// stage('Compile'){
