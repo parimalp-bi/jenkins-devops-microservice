@@ -9,22 +9,23 @@ pipeline {
 	stages{
 		stage('Checkout'){
 				steps{
-					// sh 'mvn --version'
-					// sh 'docker version'
+					sh 'mvn --version'
+					sh 'docker version'
 					echo "Build_NUMBER - $env.Build_NUMBER"
 					echo "Build_ID - $env.Build_ID"
 					echo "JOB_NAME - $env.JOB_NAME"
 					echo "Build_TAG - $env.Build_TAG"
+					echo "PATH - $PATH"
 				}
 		}
-		// stage('Compile'){
-		// 		steps{
-		// 			// sh 'mvn clean compile'
-		// 			//sh 'docker version'
-		// 		}
-		// }
+		stage('Compile'){
+				steps{
+					echo 'Compile'
+					
+				}
+		}
 
-		stage('Test'){
+		stage('Build'){
 				steps{
 					echo 'Test'
 				}
